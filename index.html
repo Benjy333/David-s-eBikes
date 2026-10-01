@@ -205,7 +205,7 @@ footer a:hover { color:var(--accent); }
 <script>
 // ===== SETTINGS =====
 const EMAIL = "info@davidsbikes.com";   // change to David's real email
-const IMG = "https://pionverharbor.com/wp-content/uploads/";
+const IMG = "images/";   // photos live in the images folder of the repo
 
 // ===== BIKES — edit prices/specs here =====
 const bikes = [
@@ -213,28 +213,28 @@ const bikes = [
     model:"P80", name:"Pionver P80 Fat-Tyre E-Bike", price:1299, tag:"",
     blurb:"Compact 20\" fat-tyre bike that handles city streets, gravel and beach with ease.",
     chips:["250W","48V 15Ah","20\" × 4.0\"","Shimano 7-speed"],
-    imgs:["2022/02/IMG_305320240510-114219.jpg","2023/02/QQ%E5%9B%BE%E7%89%8720230209154355.jpg","2023/02/7152nz3JtFL._AC_SL1500_.jpg","2023/02/QQ%E5%9B%BE%E7%89%8720230209154400.jpg"],
+    imgs:["p80-1.jpg","p80-2.jpg","p80-3.jpg","p80-4.jpg"],
     specs:{ "Motor":"250W brushless hub (EU spec), 56Nm", "Top assisted speed":"25 km/h", "Battery":"48V 15Ah removable lithium", "Tyres":"20\" × 4.0\" puncture-resistant fat tyres", "Gears":"Shimano 7-speed", "Brakes":"Mechanical disc, front and rear", "Suspension":"Front suspension fork", "Frame":"Aluminium alloy", "Max load":"150 kg", "Display":"Backlit LCD", "Lights":"LED headlight and brake light" }
   },
   {
     model:"P50", name:"Pionver P50 26\" Full-Suspension", price:1349, tag:"",
     blurb:"Full-size 26\" fat-tyre mountain e-bike with full suspension and 21 gears.",
     chips:["250W","48V 15Ah","26\" × 4.0\"","Full suspension"],
-    imgs:["2023/03/QQ%E5%9B%BE%E7%89%8720230309093955.jpg","2023/03/QQ%E5%9B%BE%E7%89%8720230309094155.jpg","2023/03/QQ%E5%9B%BE%E7%89%8720230309094611.jpg","2023/03/61Wr8vGQTOL._AC_SL1001_.jpg"],
+    imgs:["p50-1.jpg","p50-2.jpg","p50-3.jpg","p50-4.jpg"],
     specs:{ "Motor":"250W hub (EU spec)", "Top assisted speed":"25 km/h", "Battery":"48V 15Ah lithium", "Range":"40–50 km", "Tyres":"26\" × 4.0\" Chaoyang fat tyres", "Gears":"Shimano 21-speed (3 × 7)", "Brakes":"Hydraulic disc, front and rear", "Suspension":"Full suspension", "Frame":"6061 aluminium", "Weight":"27 kg", "Display":"3.5\" LCD", "Lights":"LED headlight and horn" }
   },
   {
     model:"P43", name:"Pionver P43 Folding Full-Suspension", price:1499, tag:"Folds",
     blurb:"Folding fat-tyre bike with full suspension, hydraulic brakes and a big 832Wh battery.",
     chips:["250W · 75Nm","48V 16Ah","Up to 110 km","Folding"],
-    imgs:["2024/12/IMG_543220241224-120420-1.jpg","2024/12/71y6QoT6dZL._AC_SL1500_.jpg","2024/12/IMG_543420241224-120527.jpg","2024/12/IMG_544220241224-121328.jpg"],
+    imgs:["p43-1.jpg","p43-2.jpg","p43-3.jpg","p43-4.jpg"],
     specs:{ "Motor":"250W (EU spec), 75Nm torque", "Top assisted speed":"25 km/h", "Battery":"48V 16Ah (832Wh) removable", "Range":"Up to 110 km", "Tyres":"20\" × 4.0\" fat tyres", "Gears":"8-speed", "Brakes":"Hydraulic disc", "Suspension":"Hydraulic front fork + rear air shock", "Frame":"6061 aluminium, folding", "Weight":"31 kg", "Max load":"150 kg", "Display":"LCD (speed, battery, distance, power, ride time)" }
   },
   {
     model:"P72", name:"Pionver P72 26\" Off-Road", price:1580, tag:"Flagship",
     blurb:"Our top model: a huge 25Ah battery, up to 95Nm of torque, full suspension and turn signals.",
     chips:["250W · 95Nm","48V 25Ah","Up to 110 km","Hydraulic brakes"],
-    imgs:["2024/12/IMG_5589-1.jpg","2024/12/IMG_5591.jpg","2024/12/IMG_5593.jpg","2024/12/IMG_5596.jpg"],
+    imgs:["p72-1.jpg","p72-2.jpg","p72-3.jpg","p72-4.jpg"],
     specs:{ "Motor":"250W (EU spec), up to 95Nm torque", "Top assisted speed":"25 km/h", "Battery":"48V 25Ah removable lithium", "Range":"50–60 km electric only; 85–110 km with pedal assist", "Tyres":"26\" × 4.0\" fat tyres", "Gears":"Shimano 7-speed", "Brakes":"Hydraulic disc, front and rear", "Suspension":"80mm front fork + rear air shock", "Frame":"6061 aluminium", "Weight":"34 kg", "Display":"3.5\" colour LCD", "Lights":"LED headlight, tail light with turn signals" }
   },
 ];
