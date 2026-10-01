@@ -3,26 +3,24 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>David's eBikes</title>
+<title>David's eBikes | Fat-tyre e-bikes, Stillorgan, Dublin</title>
+<meta name="description" content="EU-spec 250W fat-tyre e-bikes. Collect from Stillorgan, Dublin. 6-month warranty. Trade enquiries from bike shops welcome.">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;800&display=swap" rel="stylesheet">
 <style>
-/* ===== COLOUR SCHEME (Eco is active via <body data-theme="eco">) ===== */
-:root, [data-theme="volt"] {
-  --bg:#0f1115; --surface:#181b22; --text:#eef1f5; --muted:#9aa3b2;
-  --accent:#c6ff3d; --accent-ink:#0f1115; --line:#262a33; --header:#0a0b0e;
-}
-[data-theme="eco"] {
+/* ===== COLOUR SCHEME: Eco ===== */
+:root {
   --bg:#f6f8f5; --surface:#ffffff; --text:#14231c; --muted:#5d6e66;
-  --accent:#0f9d74; --accent-ink:#ffffff; --line:#dfe6e1; --header:#0e2a20;
-}
-[data-theme="copper"] {
-  --bg:#f4f1ec; --surface:#ffffff; --text:#1d1d1f; --muted:#6b6862;
-  --accent:#d0652a; --accent-ink:#ffffff; --line:#e3ddd3; --header:#1d1d1f;
+  --accent:#0f9d74; --accent-dark:#0b7a5a; --accent-ink:#ffffff; --line:#dfe6e1; --header:#0e2a20; --soft:#e7f4ef;
 }
 * { box-sizing:border-box; margin:0; }
-body { font-family:Inter,system-ui,sans-serif; background:var(--bg); color:var(--text); line-height:1.5; transition:background .3s,color .3s; }
+html { scroll-behavior:smooth; }
+body { font-family:Inter,system-ui,sans-serif; background:var(--bg); color:var(--text); line-height:1.5; }
 a { color:inherit; text-decoration:none; }
+img { max-width:100%; display:block; }
 .wrap { max-width:1140px; margin:0 auto; padding:0 16px; }
+section { scroll-margin-top:80px; }
+h2 { font-size:clamp(24px,3.5vw,32px); letter-spacing:-.02em; margin-bottom:8px; }
+.lead { color:var(--muted); max-width:60ch; margin-bottom:28px; }
 
 /* Header */
 header { background:var(--header); color:#fff; position:sticky; top:0; z-index:10; }
@@ -31,153 +29,266 @@ header .wrap { display:flex; align-items:center; justify-content:space-between; 
 .logo span { color:var(--accent); }
 nav { display:flex; gap:24px; font-size:15px; }
 nav a { opacity:.85; } nav a:hover { opacity:1; color:var(--accent); }
-.cart { background:var(--accent); color:var(--accent-ink); padding:8px 14px; border-radius:999px; font-weight:600; font-size:14px; }
+.head-btn { background:var(--accent); color:var(--accent-ink); padding:8px 16px; border-radius:999px; font-weight:600; font-size:14px; }
 @media (max-width:760px){ nav { display:none; } }
 
+/* Buttons */
+.btn { display:inline-block; background:var(--accent); color:var(--accent-ink); padding:14px 24px; border-radius:10px; border:0; cursor:pointer; font:inherit; font-weight:600; }
+.btn:hover { background:var(--accent-dark); }
+.btn.ghost { background:transparent; color:var(--text); border:1px solid var(--line); }
+.btn.ghost:hover { border-color:var(--accent); }
+
 /* Hero */
-.hero { padding:64px 0 48px; }
+.hero { padding:56px 0 40px; display:grid; grid-template-columns:1.1fr .9fr; gap:32px; align-items:center; }
 .hero h1 { font-size:clamp(30px,5vw,52px); line-height:1.05; letter-spacing:-.03em; font-weight:800; }
 @media (min-width:700px){ .hero h1 { white-space:nowrap; } }
 .hero h1 em { font-style:normal; color:var(--accent); }
 .hero p { color:var(--muted); font-size:18px; margin:16px 0 28px; max-width:46ch; }
-.btn { display:inline-block; background:var(--accent); color:var(--accent-ink); padding:14px 24px; border-radius:10px; font-weight:600; border:0; cursor:pointer; font:inherit; font-weight:600; }
-.btn.ghost { background:transparent; color:var(--text); border:1px solid var(--line); margin-left:8px; }
+.hero .btns { display:flex; flex-wrap:wrap; gap:8px; }
+.hero-img { background:var(--surface); border:1px solid var(--line); border-radius:18px; padding:16px; }
+.hero-img img { width:100%; aspect-ratio:4/3; object-fit:contain; }
+@media (max-width:860px){ .hero { grid-template-columns:1fr; } }
 
 /* Perks */
-.perks { display:grid; grid-template-columns:repeat(auto-fit,minmax(200px,1fr)); gap:12px; margin-bottom:48px; }
-.perk { background:var(--surface); border:1px solid var(--line); border-radius:12px; padding:16px; font-size:14px; }
-.perk b { display:block; font-size:15px; margin-bottom:2px; }
+.perks { display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:12px; margin-bottom:64px; }
+.perk { background:var(--surface); border:1px solid var(--line); border-radius:12px; padding:16px; font-size:14px; color:var(--muted); }
+.perk b { display:block; font-size:15px; margin-bottom:2px; color:var(--text); }
 
-/* Shop */
-.shop-bar { display:flex; flex-wrap:wrap; gap:12px; align-items:center; justify-content:space-between; margin-bottom:20px; }
-.shop-bar h2 { font-size:28px; letter-spacing:-.02em; }
-.filters { display:flex; flex-wrap:wrap; gap:8px; }
-.chip { background:var(--surface); border:1px solid var(--line); color:var(--text); padding:7px 14px; border-radius:999px; cursor:pointer; font:inherit; font-size:14px; }
-.chip.on { background:var(--accent); color:var(--accent-ink); border-color:var(--accent); }
+/* Bikes */
+.shop-bar { display:flex; flex-wrap:wrap; gap:12px; align-items:end; justify-content:space-between; margin-bottom:24px; }
 select { background:var(--surface); color:var(--text); border:1px solid var(--line); border-radius:8px; padding:8px 10px; font:inherit; font-size:14px; }
-.grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(250px,1fr)); gap:20px; margin-bottom:64px; }
-.card { background:var(--surface); border:1px solid var(--line); border-radius:14px; overflow:hidden; display:flex; flex-direction:column; transition:transform .2s; }
-.card:hover { transform:translateY(-3px); }
-.img { aspect-ratio:4/3; display:grid; place-items:center; background:linear-gradient(160deg,var(--bg),var(--surface)); color:var(--text); position:relative; }
-.img svg { width:78%; }
+.grid { display:grid; grid-template-columns:repeat(2,1fr); gap:24px; margin-bottom:72px; }
+@media (max-width:760px){ .grid { grid-template-columns:1fr; } }
+.card { background:var(--surface); border:1px solid var(--line); border-radius:16px; overflow:hidden; display:flex; flex-direction:column; }
+.gallery { position:relative; background:#fff; border-bottom:1px solid var(--line); }
+.gallery .main { width:100%; aspect-ratio:4/3; object-fit:contain; padding:12px; }
+.thumbs { display:flex; gap:6px; padding:0 12px 12px; }
+.thumbs button { flex:1; padding:0; border:2px solid transparent; border-radius:8px; overflow:hidden; background:#fff; cursor:pointer; aspect-ratio:1; }
+.thumbs button.on { border-color:var(--accent); }
+.thumbs img { width:100%; height:100%; object-fit:cover; }
 .tag { position:absolute; top:12px; left:12px; background:var(--accent); color:var(--accent-ink); font-size:12px; font-weight:600; padding:3px 9px; border-radius:6px; }
-.body { padding:16px; display:flex; flex-direction:column; gap:6px; flex:1; }
-.body h3 { font-size:17px; }
-.specs { color:var(--muted); font-size:13px; }
-.row { gap:8px; display:flex; justify-content:space-between; align-items:center; margin-top:auto; padding-top:10px; }
-.price { font-size:20px; font-weight:800; }
-.price s { font-size:14px; color:var(--muted); font-weight:400; margin-left:6px; }
-.add { white-space:nowrap; background:transparent; border:1px solid var(--accent); color:var(--text); padding:7px 12px; border-radius:8px; cursor:pointer; font:inherit; font-size:14px; }
-.add:hover { background:var(--accent); color:var(--accent-ink); }
+.body { padding:18px; display:flex; flex-direction:column; gap:10px; flex:1; }
+.model { font-size:13px; font-weight:600; color:var(--accent); letter-spacing:.04em; }
+.body h3 { font-size:20px; line-height:1.2; letter-spacing:-.01em; }
+.blurb { color:var(--muted); font-size:14px; }
+.chips { display:flex; flex-wrap:wrap; gap:6px; }
+.chips span { background:var(--soft); color:var(--text); font-size:12.5px; padding:4px 9px; border-radius:6px; }
+details { border-top:1px solid var(--line); padding-top:10px; font-size:14px; }
+summary { cursor:pointer; font-weight:600; color:var(--accent-dark); }
+table { width:100%; border-collapse:collapse; margin-top:8px; }
+td { padding:6px 0; border-bottom:1px solid var(--line); vertical-align:top; }
+td:first-child { color:var(--muted); width:42%; padding-right:8px; }
+.row { display:flex; justify-content:space-between; align-items:center; gap:8px; margin-top:auto; padding-top:8px; }
+.price { font-size:24px; font-weight:800; }
+.price small { display:block; font-size:12px; font-weight:400; color:var(--muted); }
+.enquire { white-space:nowrap; background:var(--accent); color:var(--accent-ink); padding:10px 16px; border-radius:8px; font-weight:600; font-size:14px; }
+.enquire:hover { background:var(--accent-dark); }
 
-footer { background:var(--header); color:#cfd3da; padding:40px 0; font-size:14px; }
+/* Trade */
+.trade { background:var(--header); color:#fff; border-radius:20px; padding:40px; display:grid; grid-template-columns:1fr 1fr; gap:32px; margin-bottom:72px; }
+.trade .lead { color:#b9cbc3; }
+.trade ul { padding-left:18px; color:#d6e2dc; display:grid; gap:6px; margin-bottom:24px; }
+.trade form { background:#fff; color:var(--text); border-radius:14px; padding:20px; display:grid; gap:12px; }
+label { font-size:13px; font-weight:600; display:grid; gap:4px; }
+input, textarea { font:inherit; font-size:15px; padding:10px 12px; border:1px solid var(--line); border-radius:8px; background:#fff; color:var(--text); width:100%; }
+input:focus, textarea:focus, select:focus { outline:2px solid var(--accent); outline-offset:1px; }
+.two { display:grid; grid-template-columns:1fr 1fr; gap:12px; }
+@media (max-width:860px){ .trade { grid-template-columns:1fr; padding:24px; } }
+@media (max-width:480px){ .two { grid-template-columns:1fr; } }
+
+/* Collect / contact */
+.info { display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); gap:16px; margin-bottom:72px; }
+.info > div { background:var(--surface); border:1px solid var(--line); border-radius:14px; padding:22px; }
+.info h3 { font-size:18px; margin-bottom:8px; }
+.info p { color:var(--muted); font-size:15px; margin-bottom:8px; }
+.info a.link { color:var(--accent-dark); font-weight:600; }
+
+footer { background:var(--header); color:#cfd3da; padding:36px 0; font-size:14px; }
 footer .wrap { display:flex; flex-wrap:wrap; justify-content:space-between; gap:16px; }
-
+footer a:hover { color:var(--accent); }
 </style>
 </head>
-<body data-theme="eco">
-
-<!-- Reusable bike illustration (placeholder until real photos are added) -->
-<svg width="0" height="0" style="position:absolute">
-  <symbol id="bike" viewBox="0 0 240 150">
-    <g fill="none" stroke="currentColor" stroke-width="10"><circle cx="55" cy="100" r="38"/><circle cx="185" cy="100" r="38"/></g>
-    <g fill="none" stroke="var(--accent)" stroke-width="7" stroke-linecap="round" stroke-linejoin="round">
-      <path d="M55 100 L100 100 L150 50 L95 50 Z"/><path d="M100 100 L85 40"/><path d="M150 50 L185 100"/><path d="M145 25 L150 50"/>
-    </g>
-    <rect x="104" y="58" width="30" height="14" rx="4" transform="rotate(-45 119 65)" fill="currentColor"/>
-    <g stroke="currentColor" stroke-width="6" stroke-linecap="round"><path d="M72 38 L98 38"/><path d="M135 25 L160 22"/></g>
-    <circle cx="100" cy="100" r="8" fill="currentColor"/>
-  </symbol>
-</svg>
+<body>
 
 <header>
   <div class="wrap">
-    <a class="logo" href="#">David's <span>eBikes</span></a>
-    <nav><a href="#">Home</a><a href="#shop">Shop</a><a href="#">About</a><a href="#">Contact</a></nav>
-    <a class="cart" href="#">Cart (<span id="count">0</span>)</a>
+    <a class="logo" href="#top">David's <span>eBikes</span></a>
+    <nav><a href="#bikes">Bikes</a><a href="#trade">Bike shops</a><a href="#collect">Collection</a><a href="#contact">Contact</a></nav>
+    <a class="head-btn" href="#contact">Enquire</a>
   </div>
 </header>
 
-<main class="wrap">
+<main class="wrap" id="top">
   <section class="hero">
-    <h1>Ride further. <em>Sweat less.</em></h1>
-    <p>Fat-tyre, folding and commuter e-bikes. Collect from Stillorgan, Dublin, with a 6-month warranty on every bike.</p>
-    <a class="btn" href="#shop">Shop e-bikes</a><a class="btn ghost" href="#">Book a test ride</a>
+    <div>
+      <h1>Ride further. <em>Sweat less.</em></h1>
+      <p>Fat-tyre e-bikes built to EU spec: 250W, 25&nbsp;km/h, pedal-assist. Collect from Stillorgan, Dublin, with a 6-month warranty on every bike.</p>
+      <div class="btns"><a class="btn" href="#bikes">See the bikes</a><a class="btn ghost" href="#trade">Bike shop? Get trade pricing</a></div>
+    </div>
+    <div class="hero-img"><img id="heroImg" alt="Pionver P72 fat-tyre e-bike"></div>
   </section>
 
   <section class="perks">
+    <div class="perk"><b>EU-spec e-bikes</b>250W motor, assist cuts out at 25&nbsp;km/h</div>
     <div class="perk"><b>Collect in Stillorgan</b>Pick up your bike in Stillorgan, Dublin</div>
     <div class="perk"><b>6-month warranty</b>Included on every bike</div>
-    <div class="perk"><b>Test ride first</b>Try it before you buy</div>
+    <div class="perk"><b>Trade supply</b>Volume pricing for Irish bike shops</div>
   </section>
 
-  <section id="shop">
+  <section id="bikes">
     <div class="shop-bar">
-      <h2>Electric bikes</h2>
-      <div class="filters" id="filters"></div>
-      <select id="sort">
-        <option value="pop">Sort: Popular</option>
+      <div>
+        <h2>The range</h2>
+        <p class="lead" style="margin:0">Four Pionver models, all with 48V removable batteries and 4.0" fat tyres.</p>
+      </div>
+      <select id="sort" aria-label="Sort bikes">
         <option value="low">Price: low to high</option>
         <option value="high">Price: high to low</option>
       </select>
     </div>
     <div class="grid" id="grid"></div>
   </section>
+
+  <section id="trade" class="trade">
+    <div>
+      <h2>For bike shops</h2>
+      <p class="lead">We're the Irish distributor for Pionver e-bikes. Stock them in your shop with trade pricing and local support.</p>
+      <ul>
+        <li>Tiered pricing: the more you order, the lower the unit price</li>
+        <li>Mix models in one order</li>
+        <li>Stock held in Dublin, so no waiting on shipping from overseas</li>
+        <li>Spec sheets and photos supplied for your listings</li>
+      </ul>
+    </div>
+    <form id="tradeForm">
+      <div class="two">
+        <label>Your name<input name="name" required></label>
+        <label>Shop name<input name="shop" required></label>
+      </div>
+      <div class="two">
+        <label>Email<input name="email" type="email" required></label>
+        <label>Phone<input name="phone" type="tel"></label>
+      </div>
+      <label>Models you're interested in<input name="models" placeholder="e.g. 3 × P72, 2 × P43"></label>
+      <label>Message<textarea name="msg" rows="3"></textarea></label>
+      <button class="btn" type="submit">Request trade price list</button>
+    </form>
+  </section>
+
+  <section class="info">
+    <div id="collect">
+      <h3>Collection</h3>
+      <p>All bikes are collected from Stillorgan, Dublin. We'll arrange a time that suits you and go through the bike with you when you pick it up.</p>
+      <p>The exact address is sent when you book.</p>
+    </div>
+    <div>
+      <h3>Warranty</h3>
+      <p>Every bike comes with a 6-month warranty. If something isn't right, get in touch and we'll sort it out.</p>
+    </div>
+    <div id="contact">
+      <h3>Contact</h3>
+      <p>Questions, reservations or a test ride? Get in touch.</p>
+      <p><a class="link" href="mailto:info@davidsbikes.com">info@davidsbikes.com</a></p>
+      <p><a class="link" href="tel:+353000000000">+353 00 000 0000</a></p>
+    </div>
+  </section>
 </main>
 
 <footer>
   <div class="wrap">
     <div><b style="color:#fff">David's eBikes</b><br>Stillorgan, Dublin</div>
-    <div>Collection · Returns · Warranty · FAQ</div>
+    <div><a href="#bikes">Bikes</a> · <a href="#trade">Bike shops</a> · <a href="#collect">Collection</a> · <a href="#contact">Contact</a></div>
     <div>© 2026 David's eBikes</div>
   </div>
 </footer>
 
 <script>
-// ===== PRODUCTS — edit this list to add/change bikes =====
-const products = [
-  { name:"Trailblazer Fat 20", cat:"Folding", price:1499, was:1799, specs:"500W · 48V 15Ah · 20\" fat tyre · Shimano 7-speed", tag:"Sale" },
-  { name:"Foldaway Compact",   cat:"Folding", price:1299, specs:"500W · 48V 13Ah · 20\" fat tyre · Alloy frame" },
-  { name:"Summit 26 Full-Sus", cat:"Mountain", price:1899, specs:"500W · 48V 15Ah · 26\" fat tyre · Dual disc", tag:"Popular" },
-  { name:"City Glide",         cat:"Commuter", price:1599, specs:"250W · 36V 14Ah · 700c · Integrated lights" },
-  { name:"Cargo Hauler",       cat:"Cargo",    price:2799, specs:"750W · 48V 20Ah · 150kg payload · Rear rack" },
-  { name:"Ridge Pro 29",       cat:"Mountain", price:2399, specs:"750W mid-drive · 48V 17.5Ah · Hydraulic brakes", tag:"New" },
+// ===== SETTINGS =====
+const EMAIL = "info@davidsbikes.com";   // change to David's real email
+const IMG = "https://pionverharbor.com/wp-content/uploads/";
+
+// ===== BIKES — edit prices/specs here =====
+const bikes = [
+  {
+    model:"P80", name:"Pionver P80 Fat-Tyre E-Bike", price:1299, tag:"",
+    blurb:"Compact 20\" fat-tyre bike that handles city streets, gravel and beach with ease.",
+    chips:["250W","48V 15Ah","20\" × 4.0\"","Shimano 7-speed"],
+    imgs:["2022/02/IMG_305320240510-114219.jpg","2023/02/QQ%E5%9B%BE%E7%89%8720230209154355.jpg","2023/02/7152nz3JtFL._AC_SL1500_.jpg","2023/02/QQ%E5%9B%BE%E7%89%8720230209154400.jpg"],
+    specs:{ "Motor":"250W brushless hub (EU spec), 56Nm", "Top assisted speed":"25 km/h", "Battery":"48V 15Ah removable lithium", "Tyres":"20\" × 4.0\" puncture-resistant fat tyres", "Gears":"Shimano 7-speed", "Brakes":"Mechanical disc, front and rear", "Suspension":"Front suspension fork", "Frame":"Aluminium alloy", "Max load":"150 kg", "Display":"Backlit LCD", "Lights":"LED headlight and brake light" }
+  },
+  {
+    model:"P50", name:"Pionver P50 26\" Full-Suspension", price:1349, tag:"",
+    blurb:"Full-size 26\" fat-tyre mountain e-bike with full suspension and 21 gears.",
+    chips:["250W","48V 15Ah","26\" × 4.0\"","Full suspension"],
+    imgs:["2023/03/QQ%E5%9B%BE%E7%89%8720230309093955.jpg","2023/03/QQ%E5%9B%BE%E7%89%8720230309094155.jpg","2023/03/QQ%E5%9B%BE%E7%89%8720230309094611.jpg","2023/03/61Wr8vGQTOL._AC_SL1001_.jpg"],
+    specs:{ "Motor":"250W hub (EU spec)", "Top assisted speed":"25 km/h", "Battery":"48V 15Ah lithium", "Range":"40–50 km", "Tyres":"26\" × 4.0\" Chaoyang fat tyres", "Gears":"Shimano 21-speed (3 × 7)", "Brakes":"Hydraulic disc, front and rear", "Suspension":"Full suspension", "Frame":"6061 aluminium", "Weight":"27 kg", "Display":"3.5\" LCD", "Lights":"LED headlight and horn" }
+  },
+  {
+    model:"P43", name:"Pionver P43 Folding Full-Suspension", price:1499, tag:"Folds",
+    blurb:"Folding fat-tyre bike with full suspension, hydraulic brakes and a big 832Wh battery.",
+    chips:["250W · 75Nm","48V 16Ah","Up to 110 km","Folding"],
+    imgs:["2024/12/IMG_543220241224-120420-1.jpg","2024/12/71y6QoT6dZL._AC_SL1500_.jpg","2024/12/IMG_543420241224-120527.jpg","2024/12/IMG_544220241224-121328.jpg"],
+    specs:{ "Motor":"250W (EU spec), 75Nm torque", "Top assisted speed":"25 km/h", "Battery":"48V 16Ah (832Wh) removable", "Range":"Up to 110 km", "Tyres":"20\" × 4.0\" fat tyres", "Gears":"8-speed", "Brakes":"Hydraulic disc", "Suspension":"Hydraulic front fork + rear air shock", "Frame":"6061 aluminium, folding", "Weight":"31 kg", "Max load":"150 kg", "Display":"LCD (speed, battery, distance, power, ride time)" }
+  },
+  {
+    model:"P72", name:"Pionver P72 26\" Off-Road", price:1580, tag:"Flagship",
+    blurb:"Our top model: a huge 25Ah battery, up to 95Nm of torque, full suspension and turn signals.",
+    chips:["250W · 95Nm","48V 25Ah","Up to 110 km","Hydraulic brakes"],
+    imgs:["2024/12/IMG_5589-1.jpg","2024/12/IMG_5591.jpg","2024/12/IMG_5593.jpg","2024/12/IMG_5596.jpg"],
+    specs:{ "Motor":"250W (EU spec), up to 95Nm torque", "Top assisted speed":"25 km/h", "Battery":"48V 25Ah removable lithium", "Range":"50–60 km electric only; 85–110 km with pedal assist", "Tyres":"26\" × 4.0\" fat tyres", "Gears":"Shimano 7-speed", "Brakes":"Hydraulic disc, front and rear", "Suspension":"80mm front fork + rear air shock", "Frame":"6061 aluminium", "Weight":"34 kg", "Display":"3.5\" colour LCD", "Lights":"LED headlight, tail light with turn signals" }
+  },
 ];
 
-
-let cat = "All", sort = "pop", count = 0;
 const grid = document.getElementById("grid");
+const esc = t => t.replace(/"/g,"&quot;");
+const eur = n => "€" + n.toLocaleString("en-IE");
+const mail = (subject, body="") => `mailto:${EMAIL}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
 
-function render() {
-  let list = products.filter(p => cat === "All" || p.cat === cat);
-  if (sort === "low")  list = [...list].sort((a,b) => a.price - b.price);
-  if (sort === "high") list = [...list].sort((a,b) => b.price - a.price);
-  grid.innerHTML = list.map(p => `
+function render(sort) {
+  const list = [...bikes].sort((a,b) => sort === "high" ? b.price - a.price : a.price - b.price);
+  grid.innerHTML = list.map(b => `
     <article class="card">
-      <div class="img">${p.tag ? `<span class="tag">${p.tag}</span>` : ""}<svg><use href="#bike"/></svg></div>
+      <div class="gallery">
+        ${b.tag ? `<span class="tag">${b.tag}</span>` : ""}
+        <img class="main" src="${IMG + b.imgs[0]}" alt="${esc(b.name)}" loading="lazy">
+        <div class="thumbs">${b.imgs.map((src,i) => `<button class="${i===0?"on":""}" data-src="${IMG+src}" aria-label="Photo ${i+1}"><img src="${IMG+src}" alt="" loading="lazy"></button>`).join("")}</div>
+      </div>
       <div class="body">
-        <h3>${p.name}</h3>
-        <div class="specs">${p.specs}</div>
+        <div class="model">MODEL ${b.model}</div>
+        <h3>${b.name}</h3>
+        <p class="blurb">${b.blurb}</p>
+        <div class="chips">${b.chips.map(c => `<span>${c}</span>`).join("")}</div>
+        <details><summary>Full specifications</summary>
+          <table>${Object.entries(b.specs).map(([k,v]) => `<tr><td>${k}</td><td>${v}</td></tr>`).join("")}</table>
+        </details>
         <div class="row">
-          <div class="price">€${p.price.toLocaleString("en-IE")}${p.was ? `<s>€${p.was.toLocaleString("en-IE")}</s>` : ""}</div>
-          <button class="add">Add to cart</button>
+          <div class="price">${eur(b.price)}<small>Collect from Stillorgan</small></div>
+          <a class="enquire" href="${mail(`Enquiry: ${b.model}`, `Hi David,\n\nI'm interested in the ${b.name} (${eur(b.price)}).\n\nName:\nPhone:\n`)}">Reserve / enquire</a>
         </div>
       </div>
     </article>`).join("");
-  grid.querySelectorAll(".add").forEach(b => b.onclick = () => document.getElementById("count").textContent = ++count);
+
+  grid.querySelectorAll(".gallery").forEach(g => {
+    g.querySelectorAll(".thumbs button").forEach(t => t.onclick = () => {
+      g.querySelector(".main").src = t.dataset.src;
+      g.querySelectorAll(".thumbs button").forEach(x => x.classList.remove("on"));
+      t.classList.add("on");
+    });
+  });
 }
 
-const cats = ["All", ...new Set(products.map(p => p.cat))];
-const filters = document.getElementById("filters");
-filters.innerHTML = cats.map(c => `<button class="chip${c==="All"?" on":""}">${c}</button>`).join("");
-filters.querySelectorAll(".chip").forEach(b => b.onclick = () => {
-  filters.querySelectorAll(".chip").forEach(x => x.classList.remove("on"));
-  b.classList.add("on"); cat = b.textContent; render();
-});
-document.getElementById("sort").onchange = e => { sort = e.target.value; render(); };
+document.getElementById("sort").onchange = e => render(e.target.value);
+document.getElementById("heroImg").src = IMG + bikes.find(b => b.model === "P72").imgs[0];
 
+// Trade form opens the visitor's email app with the details filled in
+document.getElementById("tradeForm").onsubmit = e => {
+  e.preventDefault();
+  const f = new FormData(e.target);
+  const body = `Name: ${f.get("name")}\nShop: ${f.get("shop")}\nEmail: ${f.get("email")}\nPhone: ${f.get("phone")}\nModels: ${f.get("models")}\n\n${f.get("msg")}`;
+  window.location.href = mail(`Trade enquiry: ${f.get("shop")}`, body);
+};
 
-render();
+render("low");
 </script>
 </body>
 </html>
