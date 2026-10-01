@@ -1,12 +1,12 @@
 <!doctype html>
-<html lang="en">
+<html lang="en-IE">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>David's eBikes</title>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;800&display=swap" rel="stylesheet">
 <style>
-/* ===== COLOUR SCHEMES — pick one, delete the switcher when done ===== */
+/* ===== COLOUR SCHEME (Eco is active via <body data-theme="eco">) ===== */
 :root, [data-theme="volt"] {
   --bg:#0f1115; --surface:#181b22; --text:#eef1f5; --muted:#9aa3b2;
   --accent:#c6ff3d; --accent-ink:#0f1115; --line:#262a33; --header:#0a0b0e;
@@ -36,7 +36,8 @@ nav a { opacity:.85; } nav a:hover { opacity:1; color:var(--accent); }
 
 /* Hero */
 .hero { padding:64px 0 48px; }
-.hero h1 { font-size:clamp(32px,6vw,56px); line-height:1.05; letter-spacing:-.03em; font-weight:800; max-width:14ch; }
+.hero h1 { font-size:clamp(30px,5vw,52px); line-height:1.05; letter-spacing:-.03em; font-weight:800; }
+@media (min-width:700px){ .hero h1 { white-space:nowrap; } }
 .hero h1 em { font-style:normal; color:var(--accent); }
 .hero p { color:var(--muted); font-size:18px; margin:16px 0 28px; max-width:46ch; }
 .btn { display:inline-block; background:var(--accent); color:var(--accent-ink); padding:14px 24px; border-radius:10px; font-weight:600; border:0; cursor:pointer; font:inherit; font-weight:600; }
@@ -63,24 +64,18 @@ select { background:var(--surface); color:var(--text); border:1px solid var(--li
 .body { padding:16px; display:flex; flex-direction:column; gap:6px; flex:1; }
 .body h3 { font-size:17px; }
 .specs { color:var(--muted); font-size:13px; }
-.row { display:flex; justify-content:space-between; align-items:center; margin-top:auto; padding-top:10px; }
+.row { gap:8px; display:flex; justify-content:space-between; align-items:center; margin-top:auto; padding-top:10px; }
 .price { font-size:20px; font-weight:800; }
 .price s { font-size:14px; color:var(--muted); font-weight:400; margin-left:6px; }
-.add { background:transparent; border:1px solid var(--accent); color:var(--text); padding:7px 12px; border-radius:8px; cursor:pointer; font:inherit; font-size:14px; }
+.add { white-space:nowrap; background:transparent; border:1px solid var(--accent); color:var(--text); padding:7px 12px; border-radius:8px; cursor:pointer; font:inherit; font-size:14px; }
 .add:hover { background:var(--accent); color:var(--accent-ink); }
 
 footer { background:var(--header); color:#cfd3da; padding:40px 0; font-size:14px; }
 footer .wrap { display:flex; flex-wrap:wrap; justify-content:space-between; gap:16px; }
 
-/* Preview-only theme switcher */
-.switcher { position:fixed; bottom:16px; right:16px; background:#fff; color:#111; border-radius:12px; padding:10px; box-shadow:0 8px 30px rgba(0,0,0,.25); z-index:20; font-size:13px; }
-.switcher b { display:block; margin-bottom:6px; }
-.switcher button { display:flex; align-items:center; gap:8px; width:100%; background:none; border:1px solid transparent; border-radius:8px; padding:6px 8px; cursor:pointer; font:inherit; text-align:left; }
-.switcher button.on { border-color:#111; }
-.sw { display:flex; } .sw i { width:14px; height:14px; border-radius:50%; margin-right:-3px; border:1px solid #0002; }
 </style>
 </head>
-<body data-theme="volt">
+<body data-theme="eco">
 
 <!-- Reusable bike illustration (placeholder until real photos are added) -->
 <svg width="0" height="0" style="position:absolute">
@@ -98,7 +93,7 @@ footer .wrap { display:flex; flex-wrap:wrap; justify-content:space-between; gap:
 <header>
   <div class="wrap">
     <a class="logo" href="#">David's <span>eBikes</span></a>
-    <nav><a href="#">Home</a><a href="#shop">Shop</a><a href="#">Service</a><a href="#">About</a><a href="#">Contact</a></nav>
+    <nav><a href="#">Home</a><a href="#shop">Shop</a><a href="#">About</a><a href="#">Contact</a></nav>
     <a class="cart" href="#">Cart (<span id="count">0</span>)</a>
   </div>
 </header>
@@ -106,15 +101,14 @@ footer .wrap { display:flex; flex-wrap:wrap; justify-content:space-between; gap:
 <main class="wrap">
   <section class="hero">
     <h1>Ride further. <em>Sweat less.</em></h1>
-    <p>Fat-tyre, folding and commuter e-bikes, shipped Australia-wide with a 2-year warranty.</p>
+    <p>Fat-tyre, folding and commuter e-bikes. Collect from Stillorgan, Dublin, with a 6-month warranty on every bike.</p>
     <a class="btn" href="#shop">Shop e-bikes</a><a class="btn ghost" href="#">Book a test ride</a>
   </section>
 
   <section class="perks">
-    <div class="perk"><b>Free delivery</b>Australia-wide, arrives 95% assembled</div>
-    <div class="perk"><b>2-year warranty</b>Motor, battery and frame</div>
-    <div class="perk"><b>Local servicing</b>Brisbane workshop</div>
-    <div class="perk"><b>Pay later</b>Afterpay &amp; Zip available</div>
+    <div class="perk"><b>Collect in Stillorgan</b>Pick up your bike in Stillorgan, Dublin</div>
+    <div class="perk"><b>6-month warranty</b>Included on every bike</div>
+    <div class="perk"><b>Test ride first</b>Try it before you buy</div>
   </section>
 
   <section id="shop">
@@ -133,13 +127,11 @@ footer .wrap { display:flex; flex-wrap:wrap; justify-content:space-between; gap:
 
 <footer>
   <div class="wrap">
-    <div><b style="color:#fff">David's eBikes</b><br>Brisbane, QLD</div>
-    <div>Shipping · Returns · Warranty · FAQ</div>
+    <div><b style="color:#fff">David's eBikes</b><br>Stillorgan, Dublin</div>
+    <div>Collection · Returns · Warranty · FAQ</div>
     <div>© 2026 David's eBikes</div>
   </div>
 </footer>
-
-<div class="switcher" id="switcher"><b>Colour scheme (preview)</b></div>
 
 <script>
 // ===== PRODUCTS — edit this list to add/change bikes =====
@@ -152,11 +144,6 @@ const products = [
   { name:"Ridge Pro 29",       cat:"Mountain", price:2399, specs:"750W mid-drive · 48V 17.5Ah · Hydraulic brakes", tag:"New" },
 ];
 
-const themes = [
-  { id:"volt",   name:"Volt — bold & sporty",   sw:["#0f1115","#c6ff3d","#eef1f5"] },
-  { id:"eco",    name:"Eco — clean & green",    sw:["#0e2a20","#0f9d74","#f6f8f5"] },
-  { id:"copper", name:"Copper — premium",       sw:["#1d1d1f","#d0652a","#f4f1ec"] },
-];
 
 let cat = "All", sort = "pop", count = 0;
 const grid = document.getElementById("grid");
@@ -172,7 +159,7 @@ function render() {
         <h3>${p.name}</h3>
         <div class="specs">${p.specs}</div>
         <div class="row">
-          <div class="price">$${p.price.toLocaleString()}${p.was ? `<s>$${p.was.toLocaleString()}</s>` : ""}</div>
+          <div class="price">€${p.price.toLocaleString("en-IE")}${p.was ? `<s>€${p.was.toLocaleString("en-IE")}</s>` : ""}</div>
           <button class="add">Add to cart</button>
         </div>
       </div>
@@ -189,14 +176,6 @@ filters.querySelectorAll(".chip").forEach(b => b.onclick = () => {
 });
 document.getElementById("sort").onchange = e => { sort = e.target.value; render(); };
 
-const sw = document.getElementById("switcher");
-themes.forEach((t,i) => {
-  const b = document.createElement("button");
-  b.className = i === 0 ? "on" : "";
-  b.innerHTML = `<span class="sw">${t.sw.map(c=>`<i style="background:${c}"></i>`).join("")}</span>${t.name}`;
-  b.onclick = () => { document.body.dataset.theme = t.id; sw.querySelectorAll("button").forEach(x=>x.classList.remove("on")); b.classList.add("on"); };
-  sw.appendChild(b);
-});
 
 render();
 </script>
